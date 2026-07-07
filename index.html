@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Para Yuri ❤️</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d6336c">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #4a1c2a;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: #9d174d;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      color: #6a1b35;
+    }
+
+    .contenedor {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      padding: 25px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.13);
+      text-align: center;
+    }
+
+    .card h2 {
+      color: #b3134f;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      background: #d6336c;
+      color: white;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #a61e4d;
+      transform: scale(1.04);
+    }
+
+    .mensaje-especial {
+      display: none;
+      margin-top: 18px;
+      color: #9d174d;
+      font-weight: bold;
+    }
+
+    .acciones {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .accion {
+      background: #fff0f6;
+      padding: 18px;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .accion:hover {
+      border-color: #d6336c;
+      transform: translateY(-3px);
+    }
+
+    .accion span {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .vales {
+      display: grid;
+      gap: 12px;
+    }
+
+    .vale {
+      background: #fff0f6;
+      padding: 16px;
+      border-radius: 16px;
+      border-left: 5px solid #d6336c;
+      text-align: left;
+    }
+
+    .fecha {
+      background: #ffe3ec;
+      padding: 15px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .fecha strong {
+      color: #b3134f;
+    }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.12);
+      z-index: 10;
+    }
+
+    nav button {
+      border: none;
+      background: white;
+      padding: 12px 5px;
+      font-size: 0.8rem;
+      color: #7a1538;
+      cursor: pointer;
+    }
+
+    nav button span {
+      display: block;
+      font-size: 1.4rem;
+    }
+
+    .pantalla {
+      display: none;
+    }
+
+    .pantalla.activa {
+      display: block;
+    }
+
+    .corazon {
+      position: fixed;
+      top: -20px;
+      color: #ff4d6d;
+      font-size: 22px;
+      animation: caer linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes caer {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Para Yuri ❤️</h1>
+    <p>Una app hecha solo para ti</p>
+  </header>
+
+  <main class="contenedor">
+
+    <!-- INICIO -->
+    <section id="inicio" class="pantalla activa">
+      <div class="card">
+        <h2>Hola, mi amor ❤️</h2>
+        <p>
+          Esta app es un pequeño lugar donde puedes encontrar mensajes,
+          recuerdos y detalles que hice pensando en ti.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Frase de hoy</h2>
+        <p id="fraseHoy"></p>
+        <button class="btn" onclick="cambiarFrase()">Otra frase</button>
+      </div>
+
+      <div class="card">
+        <h2>Cuando necesites cariño</h2>
+
+        <div class="acciones">
+          <div class="accion" onclick="mostrarMensaje('triste')">
+            <span>🥺</span>
+            Estoy triste
+          </div>
+
+          <div class="accion" onclick="mostrarMensaje('extraño')">
+            <span>💌</span>
+            Te extraño
+          </div>
+
+          <div class="accion" onclick="mostrarMensaje('abrazo')">
+            <span>🤗</span>
+            Quiero un abrazo
+          </div>
+
+          <div class="accion" onclick="mostrarMensaje('amor')">
+            <span>❤️</span>
+            Te quiero
+          </div>
+        </div>
+
+        <p id="mensajeAccion" class="mensaje-especial"></p>
+      </div>
+    </section>
+
+    <!-- RECUERDOS -->
+    <section id="recuerdos" class="pantalla">
+      <div class="card">
+        <h2>Nuestros recuerdos 📸</h2>
+        <p>
+          Aquí puedes poner momentos especiales, fechas, salidas o cosas que nunca quieres olvidar.
+        </p>
+      </div>
+
+      <div class="card">
+        <p>
+          Nuestro primer recuerdo bonito fue el inicio de muchas cosas lindas.
+          Desde ese momento, cada día contigo se volvió más especial.
+        </p>
+      </div>
+
+      <div class="card">
+        <p>
+          Me gusta recordar cada risa, cada conversación y cada momento donde simplemente estuvimos juntos.
+        </p>
+      </div>
+    </section>
+
+    <!-- VALES -->
+    <section id="vales" class="pantalla">
+      <div class="card">
+        <h2>Vales de amor 🎁</h2>
+        <p>
+          Estos vales son tuyos. Puedes pedírmelos cuando quieras.
+        </p>
+      </div>
+
+      <div class="vales">
+        <div class="vale">❤️ Vale por un abrazo largo</div>
+        <div class="vale">🍿 Vale por ver una película juntos</div>
+        <div class="vale">🍕 Vale por una comida juntos</div>
+        <div class="vale">🌙 Vale por una llamada larga</div>
+        <div class="vale">🎮 Vale por hacer algo que tú elijas</div>
+        <div class="vale">💌 Vale por una carta escrita por mí</div>
+      </div>
+    </section>
+
+    <!-- FECHAS -->
+    <section id="fechas" class="pantalla">
+      <div class="card">
+        <h2>Fechas importantes 📅</h2>
+        <p>
+          Aquí guardaré fechas especiales de nosotros.
+        </p>
+      </div>
+
+      <div class="fecha">
+        <strong>Fecha especial:</strong>
+        <p>El día que empezó algo bonito entre nosotros.</p>
+      </div>
+
+      <div class="fecha">
+        <strong>Primer momento importante:</strong>
+        <p>Ese recuerdo que siempre guardaré con cariño.</p>
+      </div>
+
+      <div class="fecha">
+        <strong>Próxima sorpresa:</strong>
+        <p>Una salida o detalle que todavía no sabes ❤️</p>
+      </div>
+    </section>
+
+  </main>
+
+  <nav>
+    <button onclick="mostrarPantalla('inicio')">
+      <span>🏠</span>
+      Inicio
+    </button>
+
+    <button onclick="mostrarPantalla('recuerdos')">
+      <span>📸</span>
+      Recuerdos
+    </button>
+
+    <button onclick="mostrarPantalla('vales')">
+      <span>🎁</span>
+      Vales
+    </button>
+
+    <button onclick="mostrarPantalla('fechas')">
+      <span>📅</span>
+      Fechas
+    </button>
+  </nav>
+
+  <script>
+    const frases = [
+      "Eres mi parte favorita de muchos días ❤️",
+      "Tu sonrisa puede mejorar cualquier momento.",
+      "Gracias por existir y por estar en mi vida.",
+      "Me encantas más de lo que imaginas.",
+      "Contigo, hasta los días normales se sienten especiales.",
+      "Eres mi persona favorita para molestar y querer.",
+      "No sé cómo explicarlo, pero contigo todo se siente más bonito.",
+      "Ojalá esta app te recuerde cuánto te quiero."
+    ];
+
+    const mensajes = {
+      triste: "Mi amor, si estás triste, recuerda que no estás sola. Estoy contigo, aunque sea desde esta app. Respira, todo va a estar bien ❤️",
+      extraño: "Yo también te extraño. Si pudiera, aparecería ahora mismo para abrazarte y hacerte sonreír 💌",
+      abrazo: "Te mando un abrazo gigante, de esos que duran mucho y hacen sentir tranquilidad 🤗",
+      amor: "Yo también te quiero muchísimo. Más de lo que a veces sé decir con palabras ❤️"
+    };
+
+    function cambiarFrase() {
+      const indice = Math.floor(Math.random() * frases.length);
+      document.getElementById("fraseHoy").textContent = frases[indice];
+    }
+
+    function mostrarMensaje(tipo) {
+      const mensaje = document.getElementById("mensajeAccion");
+      mensaje.textContent = mensajes[tipo];
+      mensaje.style.display = "block";
+    }
+
+    function mostrarPantalla(id) {
+      const pantallas = document.querySelectorAll(".pantalla");
+
+      pantallas.forEach(pantalla => {
+        pantalla.classList.remove("activa");
+      });
+
+      document.getElementById(id).classList.add("activa");
+      window.scrollTo(0, 0);
+    }
+
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.innerHTML = "❤️";
+
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.animationDuration = Math.random() * 3 + 3 + "s";
+      corazon.style.opacity = Math.random();
+
+      document.body.appendChild(corazon);
+
+      setTimeout(() => {
+        corazon.remove();
+      }, 6000);
+    }
+
+    cambiarFrase();
+    setInterval(crearCorazon, 800);
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+
+</body>
+</html>
